@@ -29,13 +29,11 @@ public class Bird : MonoBehaviour
     private void ProcessCollision(IInteractable interactable)
     {
         if (interactable is Ground)
-        {
-            Debug.Log("Столкновение с землей");
+        {            
             GameOver?.Invoke();
         }
         else if (interactable is Egg)
-        {
-            Debug.Log("Столкновение с яйцом");
+        {            
             GameOver?.Invoke();
         }
     }

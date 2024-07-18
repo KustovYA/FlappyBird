@@ -9,7 +9,7 @@ public class EnemyShooter : MonoBehaviour
 
     private Vector2 direction = Vector2.left;
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(GenerateEggs());
     }
@@ -27,7 +27,7 @@ public class EnemyShooter : MonoBehaviour
 
     private void Spawn()
     {
-        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Vector3 spawnPoint = new Vector3(transform.position.x - 0.5f, transform.position.y, transform.position.z);
 
         var egg = _eggsPool.GetObject(direction);
         egg.gameObject.SetActive(true);

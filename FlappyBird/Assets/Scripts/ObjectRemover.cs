@@ -6,18 +6,15 @@ public class ObjectRemover : MonoBehaviour
     [SerializeField] private EggPool _eggPool;  
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("¬раг столкнулс€");
-
+    {       
         if (other.TryGetComponent(out Enemy enemy))
         {
-            _pool.PutObject(enemy);
-            Debug.Log("¬рага отправил в пул");
+            _pool.PutObject(enemy);            
         }
-        else if (other.TryGetComponent(out Egg egg))
+        
+        if (other.TryGetComponent(out Egg egg))
         {
-            _eggPool.PutObject(egg);
-            Debug.Log("яйцо отправил в пул");
+            _eggPool.PutObject(egg);           
         }
     }
 }

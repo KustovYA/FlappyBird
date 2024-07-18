@@ -8,6 +8,8 @@ public class Game : MonoBehaviour
     [SerializeField] private Bird _bird;    
     [SerializeField] private StartScreen _startScreen;
     [SerializeField] private EndGameScreen _endGameScreen;
+    [SerializeField] private EggPool _eggPool;
+    [SerializeField] private ObjectPool _enemyPool;
 
     private void OnEnable()
     {
@@ -40,9 +42,11 @@ public class Game : MonoBehaviour
         _endGameScreen.Close();
         StartGame();
     }
+
     private void OnPlayButtonClick()
-    {
+    {        
         _startScreen.Close();
+        _endGameScreen.Close();
         StartGame();
     }
 
@@ -50,5 +54,7 @@ public class Game : MonoBehaviour
     {
         Time.timeScale = 1;
         _bird.Reset();
+        _eggPool.Reset();
+        _enemyPool.Reset();               
     }
 }

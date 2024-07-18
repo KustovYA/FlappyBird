@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
-{
-    [SerializeField] private Transform _container;
+public class ObjectPool : Pool
+{    
     [SerializeField] private Enemy _prefab;    
 
     private Queue<Enemy> _pool;   
@@ -34,7 +33,7 @@ public class ObjectPool : MonoBehaviour
         enemy.gameObject.SetActive(false);
     }
 
-    public void Reset()
+    public override void Reset()
     {
         _pool.Clear();
     }

@@ -1,11 +1,9 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
 
-
 public class BirdShooter : MonoBehaviour
 {    
-    [SerializeField] private EggPool _eggsPool;
+    [SerializeField] private EggBirdPool _eggsPool;
     [SerializeField] private BirdMover _birdMover;
     
     private void Update()
@@ -25,7 +23,7 @@ public class BirdShooter : MonoBehaviour
 
     private void Shoot(Vector2 rotatedDirection2D)
     {
-        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Vector3 spawnPoint = new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z);
 
         var egg = _eggsPool.GetObject(rotatedDirection2D);
         egg.gameObject.SetActive(true);
