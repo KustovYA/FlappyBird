@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class EnemyGenerator : MonoBehaviour
 {
@@ -8,6 +7,8 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] private float _lowerBound;
     [SerializeField] private float _upperBound;
     [SerializeField] private ObjectPool _pool;
+
+    private Vector2 _direction = Vector2.left;
 
     private void Start()
     {
@@ -30,7 +31,7 @@ public class EnemyGenerator : MonoBehaviour
         float spawnPositionY = Random.Range(_upperBound, _lowerBound);
         Vector3 spawnPoint = new Vector3(transform.position.x, spawnPositionY, transform.position.z);
 
-        var enemy = _pool.GetObject();
+        var enemy = _pool.GetObject(_direction);
 
         enemy.gameObject.SetActive(true);
         enemy.transform.position = spawnPoint;

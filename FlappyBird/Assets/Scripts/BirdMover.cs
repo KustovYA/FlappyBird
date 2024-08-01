@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class BirdMover : MonoBehaviour

@@ -1,17 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EggPool : Pool
+public class EggPool : Pool<Egg>
 {      
-    [SerializeField] private Egg _prefab;
-   
-    private Queue<Egg> _eggPool = new Queue<Egg>();    
-
-    public IEnumerable<Egg> PooledEggs => _eggPool;
-       
-    public Egg GetObject(Vector2 direction)
+    public override Egg GetObject(Vector2 direction)
     {
-        if (_eggPool.Count == 0)
+        if (_pool.Count == 0)
         {
             var egg = Instantiate(_prefab);
             egg.transform.parent = _container;  
@@ -20,17 +13,6 @@ public class EggPool : Pool
             return egg;
         }
 
-        return _eggPool.Dequeue();
-    }
-
-    public void PutObject(Egg egg)
-    {
-        _eggPool.Enqueue(egg);
-        egg.gameObject.SetActive(false);
-    }
-
-    public override void Reset()
-    {
-        _eggPool.Clear();
-    }
+        return _pool.Dequeue();
+    }   
 }

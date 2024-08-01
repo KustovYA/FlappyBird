@@ -28,14 +28,17 @@ public class Bird : MonoBehaviour
 
     private void ProcessCollision(IInteractable interactable)
     {
-        if (interactable is Ground)
-        {            
-            GameOver?.Invoke();
-        }
-        else if (interactable is Egg)
-        {            
-            GameOver?.Invoke();
-        }
+        switch (interactable)
+        {
+            case Ground:
+                GameOver?.Invoke();
+                break;
+            case Egg:
+                GameOver?.Invoke();
+                break;
+            default:
+                break;
+        }           
     }
 
     public void Reset()
